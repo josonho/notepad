@@ -27,7 +27,8 @@
       <el-input v-model="form.content" rows="15" type="textarea"></el-input>
     </el-form-item>
     <el-form-item>
-      <el-button type="primary" @click="onSubmit">立即创建</el-button>
+      <el-button type="primary" @click="onSubmit" v-if="!workId">提交创建</el-button>
+      <el-button type="primary" @click="onSubmit" v-if="workId">提交编辑</el-button>
       <el-button @click="cancel">取消</el-button>
     </el-form-item>
   </el-form>

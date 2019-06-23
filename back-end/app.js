@@ -60,7 +60,7 @@ router.get('/queryId',async(ctx,next)=>{
 
 app.use(router.routes());
 app.listen(3000);
-console.log('app started at port 3000...http://localhost:3000/sql');
+console.log('app started at port 3000...http://localhost:3000');
 
 
 
