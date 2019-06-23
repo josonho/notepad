@@ -1,0 +1,12 @@
+CREATE TABLE `works` (
+  `id` varchar(50) COLLATE utf8_bin NOT NULL,
+  `name` varchar(100) COLLATE utf8_bin NOT NULL,
+  `content` text COLLATE utf8_bin NOT NULL,
+  `workType` tinyint(1) NOT NULL,
+  `level` tinyint(1) NOT NULL,
+  `isComplete` tinyint(1) NOT NULL,
+  `createdAt` bigint(20) NOT NULL,
+  `updatedAt` bigint(20) NOT NULL,
+  `deadline` bigint(20) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
