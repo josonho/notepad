@@ -3,7 +3,7 @@ const router = require('koa-router')();
 var bodyParser = require('koa-bodyparser');
 const {addSQL,destroySQL,updateSQL,findSQL} = require('./common/sqlOperat')
 const app = new Koa();
-app.use(bodyParser());  //post需要这个插件获取前端传递的参数
+app.use(bodyParser());  //post需要这个插件获取前端传递的参数。
 
 // 增
 router.post('/add',async(ctx,next)=>{
