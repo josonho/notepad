@@ -1,3 +1,5 @@
+import Main from '@/components/navMenu'
+
 export default {
   router: [
     {
@@ -6,14 +8,33 @@ export default {
       component: resolve => require(['@/notepad-fe/login'], resolve)
     },
     {
-      path: '/',
-      name: '首页',
-      component: resolve => require(['@/notepad-fe/homepage'], resolve)
+      path:'/',
+      component: Main,
+      hidden: true,
+      children: [{
+          path: '/',
+          component: resolve => require(['@/notepad-fe/homepage'], resolve),
+          name:'首页'
+      }]
     },
     {
-      path: '/workEdit/workEdit',
-      name: '工作编辑',
-      component: resolve => require(['@/notepad-fe/workEdit/workEdit'], resolve)
-    }
+      path: '/system',
+      name: '未完成',
+      component: Main,
+      iconCls: 'fa fa-address-card',
+      children: [
+        {
+          hidden: false,
+          path: '/',
+          component: resolve => require(['@/notepad-fe/homepage'], resolve),
+          name: '全部记事'
+        },
+        {
+          hidden: true,
+          path: '/workEdit/workEdit',
+          component: resolve => require(['@/notepad-fe/workEdit/workEdit'], resolve),
+          name: '工作编辑'
+      }]
+    },
   ]
 }

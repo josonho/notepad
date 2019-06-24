@@ -45,6 +45,7 @@ async function findSQL(opts){
   let data = null;
   await Work.findAll({
     where: opts,
+    order: '`updatedAt` DESC'
   }).then(result => {
     data = result;
 }).catch(err => {

@@ -1,19 +1,19 @@
 <template>
   <div class="homepage">
     <el-table :data="tableData" style="width: 100%">
-      <el-table-column prop="name" label="姓名" width="180">
+      <el-table-column prop="name" label="标题">
       </el-table-column>
-      <el-table-column prop="content" label="内容" width="300">
+      <el-table-column prop="content" label="内容" width="400">
       </el-table-column>
-      <el-table-column prop="workType" label="类型" width="150">
+      <el-table-column prop="workType" label="类型">
       </el-table-column>
-      <el-table-column prop="level" label="优先级" width="150">
+      <el-table-column prop="level" label="优先级">
       </el-table-column>
-      <el-table-column prop="level" label="优先级" width="150">
+      <el-table-column prop="level" label="优先级">
       </el-table-column>
-      <el-table-column prop="updatedAt" label="上次修改" width="180">
+      <el-table-column prop="updatedAt" label="上次修改" width="200">
       </el-table-column>
-      <el-table-column label="操作" fixed="right" width='200'>
+      <el-table-column label="操作" fixed="right" width="150">
         <template slot-scope="scope">
           <el-button
             size="mini"
