@@ -1,4 +1,5 @@
-import Main from '@/components/navMenu'
+import navMenu from '@/components/navMenu'
+import routerG from '@/components/routerG'
 
 export default {
   router: [
@@ -11,27 +12,41 @@ export default {
       path: '/',
       name: '未完成',
       isTopShow: true,
-      component: Main,
+      component: routerG,
       iconCls: 'el-icon-document',
       children: [
         {
           hidden: false,
-          path: '/',
-          component: resolve => require(['@/notepad-fe/work/workList'], resolve),
-          name: '全部记事'
+          path: '/work/workList',
+          component: navMenu,
+          name: '全部记事',
+          children: [{
+            hidden: false,
+            path: '/work/workList',
+            component: resolve => require(['@/notepad-fe/work/workList'], resolve),
+            name: '全部记事'
+           },
+          ],
         },
         {
-          hidden: true,
-          path: '/work/workEdit',
-          component: resolve => require(['@/notepad-fe/work/workEdit'], resolve),
-          name: '工作编辑'
+          hidden: false,
+          path: '/work/workList',
+          component: navMenu,
+          name: '工作编辑',
+          children: [{
+            hidden: false,
+            path: '/work/workEdit',
+            component: resolve => require(['@/notepad-fe/work/workEdit'], resolve),
+            name: '工作编辑'
+           }
+          ],
       }]
     },
     {
       path: '/recycleBin',
       name: '回收站',
+      component: routerG,
       isTopShow: true,
-      component: Main,
       iconCls: 'el-icon-delete-solid',
       children: [
         {
@@ -50,26 +65,7 @@ export default {
           hidden: false,
           path: '/recycleBin/recycleList',
           component: resolve => require(['@/notepad-fe/recycleBin/recycleList'], resolve),
-          name: '回收工作列表',
-          children: [
-            {
-              hidden: false,
-              path: '/',
-              component: resolve => require(['@/notepad-fe/work/workList'], resolve),
-              name: '全部记事'
-            },
-            {
-              hidden: false,
-              path: '/', 
-              component: resolve => require(['@/notepad-fe/work/workList'], resolve),
-              name: '全部记事'
-            },
-            {
-              hidden: true,
-              path: '/work/workEdit',
-              component: resolve => require(['@/notepad-fe/work/workEdit'], resolve),
-              name: '工作编辑'
-            }]
+          name: '回收工作列表'
         },
         ]
     },

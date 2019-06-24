@@ -52,7 +52,7 @@
                 :index="child.path"
                 :key="child.path"
                 v-if="!child.hidden"
-              >{{child.name}}</el-menu-item>
+              >{{child.name}} {{child.path}}</el-menu-item>
             </el-submenu>
           </template>
         </el-menu>
@@ -117,7 +117,7 @@ export default {
   data() {
     return {
       topMennudata: [],
-      isSelected: '1',
+      isSelected: '0',
       sysName: "备忘录",
       menuData: [],
       collapsed: false,
@@ -139,25 +139,13 @@ export default {
       )[0].style.display = status ? "block" : "none";
     },
     initMenu: function() {
-      // console.log(JSON.stringify(this.$router.options.routes));
-      let allRouter = [];
+      console.log(JSON.stringify(this.$router.options.routes));
       for (let i in this.$router.options.routes) {
         let root = this.$router.options.routes[i];
-        this.$router.options.routes[i].isTopShow?this.topMennudata.push(this.$router.options.routes[i].name):'';
-        if (root.hidden) continue;
-        let children = [];
-        for (let j in root.children) {
-          let item = root.children[j];
-          if (item.hidden) continue;
-          children.push(item);
-        }
-
-        if (children.length < 1) continue;  //去掉登录页面等的菜单
-        allRouter.push(root);
-        root.children = children;
+        this.$router.options.routes[i].isTopShow?this.topMennudata.push(this.$router.options.routes[i].name)&&(this.menuData.push(root)):'';
       }
-        this.menuData = allRouter;
-        console.log(JSON.stringify(allRouter));
+      this.menuData = allRouter;
+      // console.log(JSON.stringify(allRouter));
     },
     
   },
