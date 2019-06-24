@@ -60,7 +60,7 @@ export default {
             },
             {
               hidden: false,
-              path: '/',
+              path: '/', 
               component: resolve => require(['@/notepad-fe/work/workList'], resolve),
               name: '全部记事'
             },
