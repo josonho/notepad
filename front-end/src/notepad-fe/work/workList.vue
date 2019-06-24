@@ -1,5 +1,5 @@
 <template>
-  <div class="homepage">
+  <div class="workList">
     <el-table :data="tableData" style="width: 100%">
       <el-table-column prop="name" label="标题">
       </el-table-column>
@@ -32,7 +32,7 @@
 
 <script>
 export default {
-  name: 'homepage',
+  name: 'workList',
   data () {
     return {
       dialogVisible: false,
@@ -93,9 +93,9 @@ export default {
     },
     editWork(index, row){
       if(row){
-        this.$router.push({ path: '/workEdit/workEdit', query: {id: row.id}});
+        this.$router.push({ path: '/work/workEdit', query: {id: row.id}});
       }else{
-        this.$router.push({ path: '/workEdit/workEdit'});
+        this.$router.push({ path: '/work/workEdit'});
       }
     },
     renderData(data){
