@@ -7,7 +7,10 @@
       <!-- 顶部导航栏 -->
       <el-col :span="14" class="top-menu-g" :class="'logo-width'">
         <ul class="top-menu">
-          <li class="top-menu-item" :class="index==isSelected?'top-menu-selected':''" v-for="(item,index) in topMennudata" :key="index" @click="topJump(index)">{{item}}</li>
+          <li class="top-menu-item" :class="index==isSelected?'top-menu-selected':''" v-for="(item,index) in topMennudata" :key="index" @click="topJump(index)">
+            <i :class="item.iconCls"></i>
+            {{item.name}}
+            </li>
         </ul>
       </el-col>
       <el-col :span="5" class="userinfo">
@@ -45,6 +48,7 @@
           <template v-for="(item,index) in menuData[isSelected].children" v-if="!item.hidden">
             <el-submenu :index="index+''">
               <template slot="title">
+                <i :class="item.iconCls"></i>
                 {{item.name}}
               </template>
               <el-menu-item
@@ -52,7 +56,7 @@
                 :index="child.path"
                 :key="child.path"
                 v-if="!child.hidden"
-              >{{child.name}} {{child.path}}</el-menu-item>
+              >{{child.name}}</el-menu-item>
             </el-submenu>
           </template>
         </el-menu>
@@ -62,7 +66,7 @@
           v-show="collapsed"
           ref="menuCollapsed"
         >
-          <li v-for="(item,index) in menuData" :key="index" v-if="!item.hidden" class="el-submenu item">
+          <li v-for="(item,index) in menuData[isSelected].children" :key="index" v-if="!item.hidden" class="el-submenu item">
             <template>
               <div
                 class="el-submenu__title"
@@ -142,9 +146,14 @@ export default {
       console.log(JSON.stringify(this.$router.options.routes));
       for (let i in this.$router.options.routes) {
         let root = this.$router.options.routes[i];
-        this.$router.options.routes[i].isTopShow?this.topMennudata.push(this.$router.options.routes[i].name)&&(this.menuData.push(root)):'';
+        if(root.isTopShow){
+          this.topMennudata.push({
+            name: root.name,
+            iconCls: root.iconCls
+          });
+          this.menuData.push(root)
+        };
       }
-      this.menuData = allRouter;
       // console.log(JSON.stringify(allRouter));
     },
     
@@ -164,12 +173,12 @@ export default {
   bottom: 0;
   width: 100%;
   .header {
-    height: 60px;
-    line-height: 60px;
+    height: 90px;
+    line-height: 90px;
     background: #545c64;
     color: #fff;
     .logo {
-      height: 60px;
+      height: 90px;
       font-size: 22px;
       padding-left: 20px;
       padding-right: 20px;
@@ -180,12 +189,23 @@ export default {
     }
     .top-menu-g {
       cursor: pointer;
+      line-height:0;
       .top-menu {
         list-style: none;
         margin: 0;
         display: flex;
+        height: 90px;
         .top-menu-item {
           padding: 0 20px;
+          display: flex;
+          flex-flow: column;
+          align-items: center;
+          justify-content: center;
+          padding-bottom: 15px;
+          i {
+            font-size: 40px;
+            margin-bottom: 20px;
+          }
         }
         .top-menu-selected {
           background: #8d8e8f
@@ -205,7 +225,7 @@ export default {
   .main {
     display: flex;
     position: absolute;
-    top: 60px;
+    top: 90px;
     bottom: 0;
     overflow: hidden;
     aside {

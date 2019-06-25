@@ -1,0 +1,31 @@
+// dom树样式
+.content-g{
+  position: relative;
+  min-height: 78vh;
+  border-radius:15px;
+  background:#fff;
+  margin-bottom: 20px;
+  & .list-header {
+    padding: 15px;
+    border-bottom: 1px solid rgb(211, 211, 211);
+    min-height: 39px;
+    & .list-header-r {
+      position: absolute;
+      right: 15px;
+      top: 15px;
+    }
+  }
+  & .list-footer {
+    padding: 10px;
+    text-align:center;
+    position: absolute;
+    width: 100%;
+    border-top: 1px solid rgb(211, 211, 211);
+    bottom: 0;
+  }
+}
+
+// 零散样式
+.pd20{
+  padding: 20px;
+}

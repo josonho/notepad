@@ -1,33 +1,42 @@
 <template>
-  <div class="workList">
-    <el-table :data="tableData" style="width: 100%">
-      <el-table-column prop="name" label="标题">
-      </el-table-column>
-      <el-table-column prop="content" label="内容" width="400">
-      </el-table-column>
-      <el-table-column prop="workType" label="类型">
-      </el-table-column>
-      <el-table-column prop="level" label="优先级">
-      </el-table-column>
-      <el-table-column prop="level" label="优先级">
-      </el-table-column>
-      <el-table-column prop="updatedAt" label="上次修改" width="200">
-      </el-table-column>
-      <el-table-column label="操作" fixed="right" width="150">
-        <template slot-scope="scope">
-          <el-button
-            size="mini"
-            @click="editWork(scope.$index, scope.row)">编辑</el-button>
-          <el-button
-            size="mini"
-            type="danger"
-            @click="handleDelete(scope.$index, scope.row)">删除</el-button>
-        </template>
-      </el-table-column>
-    </el-table>
-    <el-button @click="editWork">新增工作</el-button>
-    <el-button @click="tologin">返回登录</el-button>
+<div class="content-g workList">
+  <div class="list-header">
+    <el-button @click="editWork" class="list-header-r">新增工作</el-button> 
   </div>
+  <el-table :data="tableData" style="width: 100%">
+    <el-table-column prop="name" label="标题">
+    </el-table-column>
+    <el-table-column prop="content" label="内容" width="400">
+    </el-table-column>
+    <el-table-column prop="workType" label="类型">
+    </el-table-column>
+    <el-table-column prop="level" label="优先级">
+    </el-table-column>
+    <el-table-column prop="level" label="优先级">
+    </el-table-column>
+    <el-table-column prop="updatedAt" label="上次修改" width="200">
+    </el-table-column>
+    <el-table-column label="操作" fixed="right" width="150">
+      <template slot-scope="scope">
+        <el-button
+          size="mini"
+          @click="editWork(scope.$index, scope.row)">编辑</el-button>
+        <el-button
+          size="mini"
+          type="danger"
+          @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+      </template>
+    </el-table-column>
+  </el-table>
+  <div class="list-footer">
+    <el-pagination
+      small
+      layout="prev, pager, next"
+      :total="50">
+    </el-pagination>
+  </div>
+</div>
+  
 </template>
 
 <script>

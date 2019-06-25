@@ -8,6 +8,7 @@ import ElementUI from 'element-ui'
 import fn from '@/common/fn'
 
 import '@/assets/css/renderCss.css'  //样式初始化
+import '@/assets/scss/common.scss'  //全局样式（全局可使用）
 import 'element-ui/lib/theme-chalk/index.css'  //需引入element主题，样式才生效
 
 Vue.use(ElementUI);
