@@ -65,9 +65,6 @@ export default {
     }
   },
   methods:{
-    tologin(){
-      this.$router.push({ path: '/login' });
-    },
     handleDelete(index, row) {
       console.log(index, row);
       // 删除确认框

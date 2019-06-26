@@ -2,7 +2,15 @@
   <el-row class="container">
     <el-col :span="24" class="header">
       <el-col :span="5" class="logo" :class="'logo-width'">
-        <a href="/" style="text-decoration:none;color:#FFFFFF;">{{sysName}}</a>
+        <a href="/work/workList" style="text-decoration:none;" class="txt">
+          <div class="txt-logo">
+            <img src="../assets/image/logo.jpg" alt="">
+          </div>
+          <span>
+            <p class="txt-cn">{{sysName}}</p>
+            <p class="txt-en">{{sysNameEn}}</p>
+          </span>
+        </a>
       </el-col>
       <!-- 顶部导航栏 -->
       <el-col :span="14" class="top-menu-g" :class="'logo-width'">
@@ -10,20 +18,24 @@
           <li class="top-menu-item" :class="index==isSelected?'top-menu-selected':''" v-for="(item,index) in topMennudata" :key="index" @click="topJump(index)">
             <i :class="item.iconCls"></i>
             {{item.name}}
-            </li>
+          </li>
+          <li class="top-menu-item" @click="toXtmusic()">
+            <i class="el-icon-headset"></i>
+            XTMUSIC
+          </li>
         </ul>
       </el-col>
       <el-col :span="5" class="userinfo">
-        <el-dropdown trigger="hover">
-          <span class="el-dropdown-link userinfo-inner">你好：{{sysUserName}}</span>
+        <el-dropdown trigger="hover" style="line-height:20px">
+          <span class="el-dropdown-link userinfo-inner">
+            你好：{{sysUserName}}
+            <i class="el-icon-info"></i>
+          </span>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item>
-              <a href="#/">首页</a>
-            </el-dropdown-item>
             <el-dropdown-item>
               <a @click>修改密码</a>
             </el-dropdown-item>
-            <el-dropdown-item @click.native>注销登录</el-dropdown-item>
+            <el-dropdown-item @click.native="toLogin">注销登录</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
       </el-col>
@@ -122,7 +134,8 @@ export default {
     return {
       topMennudata: [],
       isSelected: '0',
-      sysName: "备忘录",
+      sysName: "绿豆记事本",
+      sysNameEn: 'LEEDO NOTEBOOK',
       menuData: [],
       collapsed: false,
       sysUserName: "何召顺"
@@ -156,7 +169,12 @@ export default {
       }
       // console.log(JSON.stringify(allRouter));
     },
-    
+    toXtmusic: function(){
+      window.open("../../assets/xtmusic/index.html");  
+    },
+    toLogin: function(){
+      this.$router.push({ path: '/login' });
+    }
   },
   mounted: function() {
     this.initMenu();
@@ -183,8 +201,30 @@ export default {
       padding-left: 20px;
       padding-right: 20px;
       border-color: rgba(238, 241, 146, 0.3);
+      display: flex;
+      align-items: center;
       .txt {
-        color: #fff;
+        color: #25B298;
+        line-height: 30px;
+        display: flex;
+        align-items: center;
+        & .txt-logo{
+          width: 55px;
+          height: 55px;
+          & img {
+            width:100%;
+	          height:auto;
+          }
+        }
+        & .txt-cn {
+          margin-top: 5px;
+          margin-left: 20px;
+        }
+        & .txt-en {
+          margin-left: 20px;
+          font-size: 13px;
+          color: #95a599
+        }
       }
     }
     .top-menu-g {
@@ -208,7 +248,7 @@ export default {
           }
         }
         .top-menu-selected {
-          background: #8d8e8f
+          background: #25B298
         }
       }
     }
@@ -254,7 +294,7 @@ export default {
         }
       }
       .el-menu-collapsed li:hover {
-        color: #409eff;
+        color: #25B298;
       }
       .collapsed {
         width: 60px;
