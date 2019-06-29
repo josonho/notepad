@@ -4,7 +4,7 @@
       <el-col :span="5" class="logo" :class="'logo-width'">
         <a href="/work/workList" style="text-decoration:none;" class="txt">
           <div class="txt-logo">
-            <img src="../assets/image/logo.jpg" alt="">
+            <img src="../assets/image/logo.png" alt="">
           </div>
           <span>
             <p class="txt-cn">{{sysName}}</p>
@@ -134,7 +134,7 @@ export default {
     return {
       topMennudata: [],
       isSelected: '0',
-      sysName: "绿豆记事本",
+      sysName: "绿豆笔记",
       sysNameEn: 'LEEDO NOTEBOOK',
       menuData: [],
       collapsed: false,

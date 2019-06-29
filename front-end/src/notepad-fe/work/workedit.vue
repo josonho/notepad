@@ -58,6 +58,7 @@
           this.form.id = this.workId;
           this.form.updatedAt = now;
           this.form.isComplete = 'false';
+          this.form.isDelete = 'false';
           this.$axios.post("/update",this.form).then((res) =>{   
               this.$message(res.data);
               this.$router.go(-1);//返回上一层
@@ -69,6 +70,7 @@
           this.form.createdAt = now;
           this.form.updatedAt = now;
           this.form.isComplete = 'false';
+          this.form.isDelete = 'false';
           this.$axios.post("/add",this.form).then((res) =>{   
               this.$message(res.data);
               this.$router.go(-1);//返回上一层

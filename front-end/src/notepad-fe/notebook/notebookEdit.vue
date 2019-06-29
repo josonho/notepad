@@ -2,7 +2,7 @@
   <div class="content-g pd20">
     <el-form ref="form" :model="form" label-width="80px">
       <el-form-item label="工作名称">
-        <el-input v-model="form.name"></el-input>
+        <el-input v-model="form.name" clear="el-input_w_300"></el-input>
       </el-form-item>
       <el-form-item label="工作类型">
         <el-radio-group v-model="form.workType">
@@ -19,7 +19,7 @@
           <el-radio label="2">高</el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item label="截止时间">
+      <el-form-item label="截止时间" class="el-input_w_200">
         <el-col :span="11">
           <el-date-picker type="datetime" placeholder="选择日期时间" v-model="form.deadline" value-format="timestamp" style="width: 100%;"></el-date-picker>
         </el-col>
@@ -61,6 +61,7 @@
           this.form.id = this.workId;
           this.form.updatedAt = now;
           this.form.isComplete = 'false';
+          this.form.content_simple = this.form.content.substring(0,200);
           this.$axios.post("/updateUE",this.form).then((res) =>{   
               this.$message(res.data);
               this.$router.go(-1);//返回上一层
@@ -72,6 +73,7 @@
           this.form.createdAt = now;
           this.form.updatedAt = now;
           this.form.isComplete = 'false';
+          this.form.content_simple = this.form.content.substring(0,200);
           this.$axios.post("/addUE",this.form).then((res) =>{   
               this.$message(res.data);
               this.$router.go(-1);//返回上一层

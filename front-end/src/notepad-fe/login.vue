@@ -1,7 +1,12 @@
 <template>
   <div class="login">
+    <div class="logo">
+      <img src="../assets/image/logo.png" alt="">
+      <p>你的云端大脑</p>
+      <p>绿豆笔记</p>
+    </div>
     <div class="form-g">
-      <el-form :model="ruleForm" label-width="100px" class="demo-ruleForm">
+      <el-form :model="ruleForm" label-width="40px" class="demo-ruleForm">
         <el-form-item label="账号">
           <el-input v-model="ruleForm.name" autocomplete="off"></el-input>
         </el-form-item>
@@ -56,10 +61,25 @@
   width: 100%;
   height: 100vh;
   display: flex;
+  flex-flow: column;
   align-items: center;
   justify-content: center;
+  & .logo {
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    & p {
+      color: #25B298;
+      text-align: center;
+      line-height: 35px;
+    }
+    & img {
+      width:100%;
+    }
+  }
   & .form-g {
-    width: 311px;
+    width: 251px;
+    padding: 80px 40px 0 0;
   }
 }
 </style>

@@ -1,10 +1,14 @@
 <template>
-  <div class="content-g pd20">
-    <quill-editor v-model="content"
-      class="editer">
-    </quill-editor>
+  <div class="content-g pd20 notebookDetails">
+    <div class="editer-g">
+      <quill-editor v-model="content"
+        disabled="true"
+        class="editer">
+      </quill-editor>
+    </div>
   </div>
 </template>
+
 <script>
   export default {
     data() {
@@ -67,3 +71,24 @@
     }
   }
 </script>
+
+<style lang="scss">
+.notebookDetails {
+  & .editer-g {
+    max-width: 55vw;
+    margin: 0 auto;
+    border: 1px solid #25B298;
+    & .editer {
+      & .ql-toolbar.ql-snow {
+        display: none; //隐藏编辑工具
+      }
+      & .ql-container.ql-snow {
+        border: none;
+      }
+      & * {
+        cursor: pointer;  //更改富文本鼠标为手指型
+      }
+    }
+  }
+}
+</style>

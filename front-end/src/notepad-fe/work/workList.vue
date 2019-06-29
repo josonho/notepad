@@ -16,11 +16,14 @@
     </el-table-column>
     <el-table-column prop="updatedAt" label="上次修改" width="200">
     </el-table-column>
-    <el-table-column label="操作" fixed="right" width="150">
+    <el-table-column label="操作" fixed="right" width="220">
       <template slot-scope="scope">
         <el-button
           size="mini"
           @click="editWork(scope.$index, scope.row)">编辑</el-button>
+        <el-button
+          size="mini"
+          @click="completeWork(scope.$index, scope.row)">完成</el-button>
         <el-button
           size="mini"
           type="danger"
@@ -73,7 +76,7 @@ export default {
           cancelButtonText: '取消',
           center: true
       }).then(() => {
-        this.$axios.post("/delete",{
+        this.$axios.post("/deleteBin",{
           'id': row.id  //post不需要用params
         }).then((res) =>{   
           this.$message(res.data);
@@ -83,6 +86,16 @@ export default {
         });
       }).catch(() => {
           console.log('cancel');       
+      });
+    },
+    completeWork(index, row) {
+      this.$axios.post("/complete",{
+        'id': row.id  //post不需要用params
+      }).then((res) =>{   
+        this.$message(res.data);
+        this.getWorkData();
+      }).catch((err) =>{
+        console.log(err) 
       });
     },
     getWorkData(){

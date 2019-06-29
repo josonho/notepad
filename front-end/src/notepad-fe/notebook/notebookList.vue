@@ -14,10 +14,13 @@
               </p>
             </div>
           </div>
-          <quill-editor v-model="item.content"
+          <quill-editor v-model="item.content_simple"
+            disabled="true"
             class="editer">
           </quill-editor>
-          <el-button type="primary" icon="el-icon-edit" size="mini" class="card-button" @click="editWork(index,item)"></el-button>
+          <!-- click.stop阻止事件冒泡 -->
+          <el-button type="primary" icon="el-icon-edit" size="mini" class="card-button-left" @click.stop="editWork(index,item)"></el-button>
+          <el-button type="primary" icon="el-icon-delete" size="mini" class="card-button-right" @click.stop="deleteWork(index,item)"></el-button>
         </div>
       </div>
     </div>
@@ -54,7 +57,7 @@ export default {
       console.log('点击卡片');
       this.$router.push({ path: '/notebook/notebookDetails', query: {content: item.content}});
     },
-    handleDelete(index, row) {
+    deleteWork(index, row) {
       console.log(index, row);
       // 删除确认框
       this.$confirm('是否删除该工作?', '确认删除', {
@@ -62,7 +65,7 @@ export default {
           cancelButtonText: '取消',
           center: true
       }).then(() => {
-        this.$axios.post("/delete",{
+        this.$axios.post("/deleteBin",{
           'id': row.id  //post不需要用params
         }).then((res) =>{   
           this.$message(res.data);
@@ -165,8 +168,18 @@ export default {
           & .ql-container.ql-snow {
             border: none;
           }
+          & * {
+            cursor: pointer;  //更改富文本鼠标为手指型
+          }
         }
-        & .card-button {
+        & .card-button-left {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          border-top-right-radius: 40px;
+          width: 40px;
+        }
+        & .card-button-right {
           position: absolute;
           bottom: 0;
           right: 0;
