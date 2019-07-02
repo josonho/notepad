@@ -100,6 +100,9 @@ router.get('/query',async(ctx,next)=>{
     },
     isComplete:{
       $like: false,
+    },
+    isDelete:{
+      $like: false,
     }
   }
   ctx.response.body = await findSQL(optsFind)
