@@ -6,6 +6,7 @@ import router from './router'
 import axios from 'axios'
 import ElementUI from 'element-ui'
 import fn from '@/common/fn'
+import _http from '@/common/axios'
 import  ue from 'vue-quill-editor' //调用编辑器
 
 import '@/assets/css/renderCss.css'  //样式初始化
@@ -20,6 +21,8 @@ Vue.use(ue);
 
 Vue.prototype.$fn = fn;
 Vue.prototype.$axios = axios;
+Vue.prototype.$get = _http.get;
+Vue.prototype.$post = _http.post;
 
 axios.defaults.baseURL = '/api'  //axios跨域
 axios.defaults.headers.post['Content-Type'] = 'application/json';

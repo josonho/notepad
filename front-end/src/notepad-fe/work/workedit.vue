@@ -59,7 +59,16 @@
           this.form.updatedAt = now;
           this.form.isComplete = 'false';
           this.form.isDelete = 'false';
-          this.$axios.post("/update",this.form).then((res) =>{   
+          // 封装前
+          // this.$axios.post("/update",this.form).then((res) =>{   
+          //     this.$message(res.data);
+          //     this.$router.go(-1);//返回上一层
+          //   }).catch((err) =>{
+          //     console.log(err) 
+          // })
+
+          // 封装后
+          this.$post("/update",this.form).then((res) =>{   
               this.$message(res.data);
               this.$router.go(-1);//返回上一层
             }).catch((err) =>{
@@ -79,11 +88,26 @@
           })
         }
       },
+
+      // 封装前
+      // getWorkDetails(){
+      //   this.$axios.get("/queryId",{
+      //   params: {
+      //     id : this.workId
+      //   }
+      //   }).then((res) =>{          //这里使用了ES6的语法
+      //     console.log(res)
+      //     this.form = this.renderData(res.data[0]);
+      //     console.log(this.form)
+      //   }).catch((err) =>{
+      //     console.log(err)       //请求失败返回的数据
+      //   })
+      // },
+
+      // 封装后
       getWorkDetails(){
-        this.$axios.get("/queryId",{
-        params: {
+        this.$get("/queryId",{
           id : this.workId
-        }
         }).then((res) =>{          //这里使用了ES6的语法
           console.log(res)
           this.form = this.renderData(res.data[0]);

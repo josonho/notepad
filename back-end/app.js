@@ -181,6 +181,12 @@ router.get('/queryUE',async(ctx,next)=>{
   var optsFind = {
     type:{
       $like: 1,
+    },
+    isComplete:{
+      $like: false,
+    },
+    isDelete:{
+      $like: false,
     }
   }
   ctx.response.body = await findSQL(optsFind)
