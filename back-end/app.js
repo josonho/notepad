@@ -159,6 +159,7 @@ router.post('/addUE',async(ctx,next)=>{
   ctx.set('Access-Control-Allow-Origin','\*'); //CORS跨域，第二参数为url,设置为*即支持任何跨域
   var optsAdd = ctx.request.body;
   optsAdd.type = 1;
+  optsAdd.isDelete = false;
   ctx.response.body = await addSQL(optsAdd);
 })  
 

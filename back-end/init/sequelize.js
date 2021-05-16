@@ -18,7 +18,7 @@ var Work = sequelize.define('work',{
   },
   name: Sequelize.STRING(100),
   content: Sequelize.STRING(3000),
-  content_simple: Sequelize.STRING(3000),
+  contentSimple: Sequelize.STRING(3000),
   type: Sequelize.INTEGER(10),
   workType: Sequelize.INTEGER(10),
   level: Sequelize.INTEGER(10),

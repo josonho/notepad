@@ -3,6 +3,7 @@ import routerG from '@/components/routerG'
 
 export default {
   router: [
+    { path: '/', redirect: '/work/workList' },
     {
       path: '/login',
       name: '登录',

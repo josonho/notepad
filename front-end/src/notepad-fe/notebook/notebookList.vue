@@ -14,7 +14,7 @@
               </p>
             </div>
           </div>
-          <quill-editor v-model="item.content_simple"
+          <quill-editor v-model="item.contentSimple"
             disabled="true"
             class="editer">
           </quill-editor>

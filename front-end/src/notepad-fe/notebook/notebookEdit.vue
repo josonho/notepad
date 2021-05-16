@@ -61,7 +61,7 @@
           this.form.id = this.workId;
           this.form.updatedAt = now;
           this.form.isComplete = 'false';
-          this.form.content_simple = this.form.content.substring(0,200);
+          this.form.contentSimple = this.form.content.substring(0,200);
           this.$axios.post("/updateUE",this.form).then((res) =>{   
               this.$message(res.data);
               this.$router.go(-1);//返回上一层
@@ -73,7 +73,7 @@
           this.form.createdAt = now;
           this.form.updatedAt = now;
           this.form.isComplete = 'false';
-          this.form.content_simple = this.form.content.substring(0,200);
+          this.form.contentSimple = this.form.content.substring(0,200);
           this.$axios.post("/addUE",this.form).then((res) =>{   
               this.$message(res.data);
               this.$router.go(-1);//返回上一层
